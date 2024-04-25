@@ -114,26 +114,10 @@ function DisplayResponce() {
   };
 
   // text to speech
-  // const handleSpeech = () => {
-    // let textToSpeak;
-    // let utterance;
-    // if (englishResponce) {
-    //   textToSpeak = getAiResponceFromCohere;
-    //   utterance = new SpeechSynthesisUtterance(textToSpeak);
-    //   utterance.lang = "en";
-    // } else {
-    //   textToSpeak = translatedResponce;
-    //   utterance = new SpeechSynthesisUtterance(textToSpeak);
-    //   utterance.lang = selectedCountry;
-    // }
-    // if (textToSpeak) {
-    //   speechSynthesis.speak(utterance);
-    // }
-  // };
   useEffect(() => {
     let textToSpeak;
     let utterance;
-    if (englishResponce) {
+    if (selectedCountry === 'en') {
       textToSpeak = getAiResponceFromCohere;
       utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.lang = "en";
@@ -142,6 +126,7 @@ function DisplayResponce() {
       utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.lang = selectedCountry;
     }
+    // speechSynthesis.cancel();
     if (textToSpeak) {
       speechSynthesis.speak(utterance);
     }
